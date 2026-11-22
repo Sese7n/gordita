@@ -1,0 +1,507 @@
+
+/* =========================
+   CONFIGURACION GENERAL
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --black: #080808;
+    --dark: #111111;
+    --red: #9e151e;
+    --light-red: #d83242;
+    --white: #e8e3df;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--black);
+    color: var(--white);
+
+    font-family: 'Cormorant Garamond', serif;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    position: relative;
+}
+
+
+/* =========================
+   FONDO ANIMADO
+========================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: -100%;
+
+    pointer-events: none;
+    z-index: 0;
+
+    background-image:
+        repeating-linear-gradient(
+            105deg,
+            transparent 0px,
+            transparent 40px,
+            rgba(180, 180, 180, 0.12) 41px,
+            transparent 42px
+        );
+
+    animation: lluvia 1.5s linear infinite;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+    z-index: 0;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 10%,
+            rgba(0, 0, 0, 0.75) 100%
+        );
+}
+
+@keyframes lluvia {
+    from {
+        transform: translateY(-10%);
+    }
+
+    to {
+        transform: translateY(10%);
+    }
+}
+
+
+/* =========================
+   PARTICULAS
+========================= */
+
+.particle {
+    position: fixed;
+    bottom: -20px;
+
+    width: 3px;
+    height: 3px;
+
+    background: #b51f2a;
+    border-radius: 50%;
+
+    pointer-events: none;
+    z-index: 1;
+
+    box-shadow: 0 0 10px #c51d2c;
+
+    animation: subir linear forwards;
+}
+
+@keyframes subir {
+    from {
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   PANTALLA INICIAL
+========================= */
+
+.inicio {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+
+    position: relative;
+    z-index: 2;
+}
+
+.contenedor {
+    width: 90%;
+    max-width: 520px;
+
+    padding: 50px 30px;
+
+    text-align: center;
+
+    background: rgba(15, 15, 15, 0.92);
+
+    border: 1px solid rgba(158, 21, 30, 0.4);
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 0 30px rgba(120, 0, 10, 0.15),
+        0 20px 70px rgba(0, 0, 0, 0.8);
+
+    animation: aparecer 1.5s ease;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   TITULOS Y TEXTOS
+========================= */
+
+h1, h2 {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-weight: 400;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 8vw, 3.8rem);
+    color: #e4dcdc;
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px rgba(180, 0, 20, 0.5);
+}
+
+h2 {
+    font-size: clamp(2rem, 7vw, 3rem);
+    color: var(--light-red);
+    margin-bottom: 25px;
+}
+
+p {
+    font-size: 1.35rem;
+    line-height: 1.7;
+    color: #bdb5b5;
+    margin-bottom: 25px;
+}
+
+
+/* =========================
+   CORAZON
+========================= */
+
+.corazon {
+    font-size: 55px;
+    color: var(--red);
+    margin-bottom: 25px;
+
+    animation: latido 1.5s infinite;
+
+    text-shadow: 0 0 20px rgba(200, 0, 20, 0.7);
+}
+
+@keyframes latido {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+
+/* =========================
+   BOTONES
+========================= */
+
+button {
+    padding: 13px 28px;
+
+    border: 1px solid #8e1822;
+    border-radius: 3px;
+
+    background: #78131c;
+    color: white;
+
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    letter-spacing: 1px;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: #a51c29;
+    box-shadow: 0 0 20px rgba(180, 0, 20, 0.4);
+    transform: translateY(-3px);
+}
+
+
+/* =========================
+   HISTORIA
+========================= */
+
+.historia {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 850px;
+
+    margin: auto;
+    padding: 30px 25px;
+}
+
+.oculto {
+    display: none;
+}
+
+
+/* =========================
+   SECCIONES
+========================= */
+
+.seccion {
+    min-height: 85vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 70px 20px;
+
+    border-bottom: 1px solid rgba(158, 21, 30, 0.2);
+}
+
+.numero {
+    color: #a52a36;
+    font-size: 0.95rem;
+    letter-spacing: 4px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   FOTOGRAFIAS
+========================= */
+
+.recuerdo img {
+    width: 100%;
+    max-width: 550px;
+
+    max-height: 500px;
+    object-fit: cover;
+
+    border: 1px solid rgba(158, 21, 30, 0.5);
+
+    padding: 8px;
+
+    background: #111;
+
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+
+    margin: 25px 0;
+
+    border-radius: 4px;
+}
+
+
+/* =========================
+   VIDEO
+========================= */
+
+video {
+    width: 100%;
+    max-width: 650px;
+
+    border: 1px solid rgba(158, 21, 30, 0.5);
+
+    background: #000;
+
+    margin: 25px 0;
+}
+
+
+/* =========================
+   INDICADOR DE SCROLL
+========================= */
+
+.indicador {
+    margin-top: 40px;
+
+    color: #a52a36;
+
+    letter-spacing: 2px;
+
+    animation: flotar 1.5s infinite;
+}
+
+@keyframes flotar {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+
+/* =========================
+   ANIMACIONES AL DESLIZAR
+========================= */
+
+.revelar {
+    opacity: 0;
+    transform: translateY(50px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.revelar.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* =========================
+   FINAL
+========================= */
+
+.final {
+    min-height: 100vh;
+}
+
+.final h1 {
+    margin-top: 30px;
+}
+
+
+
+/* =========================
+   FINAL - FOTOGRAFIAS DE LA CARTA
+========================= */
+
+.final img {
+    display: block;
+
+    width: 100%;
+    max-width: 420px;
+
+    /* Tamaño uniforme para fotos verticales y horizontales */
+    height: 380px;
+
+    object-fit: cover;
+    object-position: center;
+
+    border: 1px solid rgba(158, 21, 30, 0.5);
+    padding: 8px;
+    background: #111;
+
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+
+    margin: 35px auto;
+    border-radius: 4px;
+
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Efecto sutil al pasar el cursor */
+.final img:hover {
+    transform: scale(1.025);
+    box-shadow: 0 12px 45px rgba(120, 0, 10, 0.3);
+}
+
+/* =========================
+   FINAL - RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+    .final img {
+        max-width: 100%;
+        height: 300px;
+        margin: 25px auto;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+    .contenedor {
+        padding: 40px 20px;
+    }
+
+    .historia {
+        padding: 15px;
+    }
+
+    .seccion {
+        padding: 60px 10px;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+
+    .recuerdo img {
+        max-height: 400px;
+    }
+
+}
+
+
+/* =========================
+   ACCESIBILIDAD
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+
+}
